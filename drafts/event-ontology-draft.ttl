@@ -1,0 +1,54 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://ontology.slub-dresden.de/draft/events#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix event: <https://w3id.org/arco/ontology/cultural-event/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+:Event a rdfs:Class ;
+    rdfs:label "Event"@en .
+    rdfs:subClassOf event:Event .
+
+
+:Exhibition a rdfs:Class ;
+    rdfs:label "Exhibition"@en ;
+    rdfs:subClassOf :Event .
+
+:mainSubject a rdfs:Property ;
+    rdfs:label "main subject"@en ;
+    rdfs:domain :Event ;
+    rdfs:range rdfs:Class .
+
+:Person a rdfs:Class ;
+    rdfs:label "Person"@en ;
+    rdfs:subClassOf dct:Agent, foaf:Person .
+
+:hasTopic a rdfs:Property ;
+    rdfs:label "has topic"@en ;
+    rdfs:domain :Event ;
+    rdfs:range :Person, :Topic, : .
+
+:eventSchedule a rdfs:Property ;
+    rdfs:label "event schedule"@en ;
+    rdfs:domain :Event ;
+    rdfs:range time:Interval .
+
+:eventDateRange a rdfs:Property ;
+    rdfs:label "event date range"@en ;
+    rdfs:domain :Event ;
+    rdfs:range time:Interval .
+
+:startTime a rdfs:Property ;
+    rdfs:label "start time"@en ;
+    rdfs:domain time:Event ;
+    rdfs:range time:Instant .
+
+:endTime a rdfs:Property ;
+    rdfs:label "end time"@en ;
+    rdfs:domain time:Event ;
+    rdfs:range time:Instant .
+
+
